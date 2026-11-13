@@ -20,3 +20,11 @@ def about():
 def view():
     data = load_data()
     return data
+
+@app.get('/patients/{patient_id}') 
+def view_patient(patient_id: str):
+    # Load the data from the JSON file
+    data = load_data()   
+    if patient_id in data:
+        return data[patient_id]
+    return {"error": "Patient not found."}
