@@ -1,5 +1,5 @@
 
-from fastapi import APIRouter, Path, HTTPException 
+from fastapi import APIRouter, Path, HTTPException ,Query
 import json
 
 router = APIRouter()
@@ -30,3 +30,19 @@ def view_patient(patient_id: str =Path(...,description="The ID of the patient to
         return data[patient_id]
 
     raise HTTPException(status_code=404, detail="Patient not found")
+
+@router.get('/sort')
+def sort_patients(sort_by: str = Query(..., description='sort on the basis of height, weight, or bmi'),order: str = Query('asc', description='sort order, can be asc or desc')):
+    data = load_data()
+    valid_fields= ['height', 'weight', 'bmi']
+    if sort_by not in valid_fields:
+        raise HTTPException(status_code=400, detail=f"Invalid fields select from  {valid_fields}")
+
+    if order not in ['asc', 'desc']:
+        raise HTTPException(status_code=400, detail="Invalid order, select from 'asc' or 'desc'")
+
+    data=load_data()
+    sort_order = True if order == 'desc' else False
+    sorted_data=sorted(data.values(),key=lambda x:x[sort_by],reverse=sort_order)
+
+    return sorted_data
