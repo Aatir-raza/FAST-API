@@ -1,9 +1,7 @@
 
-from fastapi import APIRouter, Path, HTTPException ,Query
+from fastapi import APIRouter, Path, HTTPException, Query
 import json
-
 router = APIRouter()
-
 
 # Function to load patient data
 def load_data():
