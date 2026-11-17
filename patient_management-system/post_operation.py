@@ -8,7 +8,6 @@ from patients import load_data
 
 router = APIRouter()
 
-
 class Patient(BaseModel):
 
     id: Annotated[str, Field(..., description="The ID of the patient", example="P001")]
