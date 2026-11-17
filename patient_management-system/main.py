@@ -7,6 +7,7 @@ from delete import router as delete_router
 
 app = FastAPI()
 
+
 # Connect patients.py
 app.include_router(patients_router)
 app.include_router(post_operation_router)
