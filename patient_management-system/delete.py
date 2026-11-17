@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException, APIRouter
 from fastapi.responses import JSONResponse
 import json
 
+
 router = APIRouter()
 
 @router.delete('/delete/{patient_id}')
