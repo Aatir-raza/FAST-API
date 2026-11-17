@@ -2,13 +2,16 @@
 from fastapi import FastAPI
 from patients import router as patients_router
 from post_operation import router as post_operation_router
+from put import router as put_router
+from delete import router as delete_router
 
 app = FastAPI()
 
 # Connect patients.py
 app.include_router(patients_router)
 app.include_router(post_operation_router)
-
+app.include_router(put_router)
+app.include_router(delete_router)
 
 @app.get("/")
 def hello():
