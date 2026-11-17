@@ -30,6 +30,7 @@ def update_patient(patient_id: str, patient_update: PatientUpdate):
     # Update the patient data with the provided fields
     updated_patient_info = patient_update.model_dump(exclude_unset=True)
 
+
     for key, value in updated_patient_info.items():
         existing_patient[key] = value
 
