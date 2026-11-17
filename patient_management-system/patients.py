@@ -11,6 +11,7 @@ def load_data():
     return data
 
 
+
 # View all patients
 @router.get("/view")
 def view():
