@@ -29,6 +29,7 @@ if st.button("Predict Premium Category"):
         "occupation": occupation
     }
 
+    
     try:
         response = requests.post(API_URL, json=input_data)
         result = response.json()
